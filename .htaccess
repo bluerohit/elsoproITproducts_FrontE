@@ -1,0 +1,30 @@
+RewriteEngine On
+
+# All OEM page URL
+RewriteRule ^oem/?$ all-oem.php [L,QSA]
+
+# Individual OEM details URL
+RewriteRule ^oem/([a-zA-Z0-9_-]+)/?$ oem-details.php?slug=$1 [L,QSA]
+
+# Category listing page
+RewriteRule ^category/?$ category.php [L,QSA]
+
+# Individual category details URL
+RewriteRule ^category/([a-zA-Z0-9_-]+)/?$ category-details.php?slug=$1 [L,QSA]
+
+
+
+# Product listing page
+RewriteRule ^product/?$ product.php [L,QSA]
+
+# Individual Product details URL
+RewriteRule ^product/([a-zA-Z0-9_-]+)/?$ product-details.php?slug=$1 [L,QSA]
+
+
+# Redirect index.php to clean homepage URL
+RewriteCond %{THE_REQUEST} \s/+webdemo/index\.php(?:[\s?]|$) [NC]
+RewriteRule ^index\.php$ /webdemo/ [R=301,L]
+
+
+# Category pagination SEO URL
+RewriteRule ^category/([^/]+)/([0-9]+)/?$ category.php?slug=$1&page=$2 [L,QSA]
